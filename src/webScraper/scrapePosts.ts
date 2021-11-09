@@ -1,5 +1,4 @@
-import { Page } from "puppeteer";
-import { Username, Post, PostStatus } from "../typeDefinitions/types.js";
+import { Username, Post, PostStatus, Page } from "../typeDefinitions/types.js";
 
 /**
  * predicate that checks if the browser is on the posts list page
@@ -98,9 +97,10 @@ const getOnlyRelevantPosts = async (
   // we have to filter out first the irrelevant posts
   // and then wait for the selector "#the-list".
   // Thus, we can be sure the posts list was effectively filtered
-  await showOnlyMaintainerPosts(page, authorUsername);
-
-  await page.waitForSelector("#the-list");
+  await Promise.all([
+    showOnlyMaintainerPosts(page, authorUsername), 
+    page.waitForSelector("#the-list")
+  ]);
 
   return await page.evaluate((limit) => {
     // Wordpress shows the status and publishing date in a string of the form

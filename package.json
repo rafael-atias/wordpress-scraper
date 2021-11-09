@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "npm run build && node .\\build\\src\\index.js",
+    "build": ".\\node_modules\\.bin\\babel ./src --extensions .ts --out-dir ./build/src",
     "test": "jest --watch --verbose",
     "check-types": ".\\node_modules\\.bin\\tsc"
   },

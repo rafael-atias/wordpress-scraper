@@ -9,8 +9,6 @@ type NullUsername = "";
 
 export type Username = ValidUsername | NullUsername;
 
-
-
 export type PostStatus = "publish" | "future";
 
 export type Post = { 
@@ -79,3 +77,6 @@ export type WordpressUser = {
   avatar_urls: object,
   meta: object,
 }
+
+export type Browser = import("puppeteer").Browser;
+export type Page = import("puppeteer").Page;

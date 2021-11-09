@@ -1,8 +1,7 @@
-import type { Browser, Page } from "puppeteer";
-import puppeteer from 'puppeteer-extra';
+import { launch } from "puppeteer";
 import { signInToWPBlog } from "./signInToWPBlog.js";
 import { getLatestPostsFromWPBlog } from "./scrapePosts.js";
-import { Credentials, Username, Post } from "../typeDefinitions/types.js";
+import { Credentials, Username, Post, Browser, Page } from "../typeDefinitions/types.js";
 import 'regenerator-runtime/runtime.js'
 
 /**
@@ -26,7 +25,7 @@ export const scrapeWPBlog = async (
   let posts: Post[] = []
   try {
     // starts a Chrome instance
-    browser = await puppeteer.launch({
+    browser = await launch({
       headless: false,
       //headless: true,
       // ignoreDefaultArgs: ['--disable-extensions'],
@@ -36,9 +35,10 @@ export const scrapeWPBlog = async (
     // abre una página
     page = await browser.newPage();
 
-    await page.setViewport({ width: 1200, height: 768 });
-
-    page.setDefaultTimeout(10000);
+    await Promise.all([
+      page.setViewport({ width: 1200, height: 768 }),
+      page.setDefaultTimeout(10000)
+    ])
 
     await signInToWPBlog(page, credentials);
 
