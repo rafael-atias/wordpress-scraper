@@ -1,0 +1,43 @@
+{
+  "name": "wordpress-scraper",
+  "version": "1.0.0",
+  "description": "This project is a program that retrieves the latest posts from a Wordpress blog. It is a personal project based on a need in my actual job: the need to sign in to a lot of blogs to check if our writers published the content the company asked them to. This project is an attempt to automatize that task",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --watch --verbose",
+    "check-types": ".\\node_modules\\.bin\\tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafael-atias/wordpress-scraper.git"
+  },
+  "keywords": [
+    "wordpress",
+    "rest api",
+    "puppeteer"
+  ],
+  "author": "Rafael Atías",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafael-atias/wordpress-scraper/issues"
+  },
+  "homepage": "https://github.com/rafael-atias/wordpress-scraper#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@types/node": "^16.11.7",
+    "@types/puppeteer": "^5.4.4",
+    "babel-jest": "^27.3.1",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "jest": "^27.3.1",
+    "node-fetch": "^3.1.0",
+    "puppeteer": "^11.0.0",
+    "regenerator-runtime": "^0.13.9"
+  }
+}
