@@ -1,9 +1,10 @@
-import { launch } from "puppeteer";
+import * as pkg  from "puppeteer";
 import { signInToWPBlog } from "./signInToWPBlog.js";
 import { getLatestPostsFromWPBlog } from "./scrapePosts.js";
 import { Credentials, Username, Post, Browser, Page } from "../typeDefinitions/types.js";
 import 'regenerator-runtime/runtime.js'
 
+const { launch } = pkg;
 /**
  * gets the latests posts by the current user from the
  * given blog
